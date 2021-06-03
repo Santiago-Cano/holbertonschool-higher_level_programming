@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+Module 0-read_file
+
+Read a file and print its contents to stdout
+"""
 def read_file(filename=""):
-    with open(filename) as f:
-        print(f.read())
+    """Read a file and print its contents to stdout"""
+    with open(filename, "r") as f:
+        print(f.read(), end="")
