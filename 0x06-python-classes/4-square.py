@@ -2,6 +2,7 @@
 
 """ 4-square
 Defines class Square with private attribute size and public attribute area
+Gets and sets size
 """
 
 
@@ -23,6 +24,27 @@ class Square:
             raise ValueError("size must be >= 0")
         self.__size = size
 
+    @property
+    def size(self):
+        """ Gets size attribute
+        Returns:
+            __size
+        """
+        return (self.__size)
+
+    @size.setter
+    def size(self, value):
+        """ Sets size attribute
+
+        Raises:
+            TypeError(size must be an integer)
+            ValueError(size must be >= 0)
+        """
+        if type(value)is not int:
+            raise TypeError("size must be an integer")
+        if value < 0:
+            raise ValueError("size must be >= 0")
+        self.__size = value
     def area(self):
         """ Calculates area of a square
         Returns:
