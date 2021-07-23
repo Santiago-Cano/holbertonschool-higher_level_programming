@@ -4,6 +4,7 @@
 A square class with an empty size private attribute
 """
 
+
 class Square:
     """ Class Square
 
