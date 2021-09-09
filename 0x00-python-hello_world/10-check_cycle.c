@@ -8,10 +8,9 @@
 int check_cycle(listint_t *list)
 {
 
-	listint_t *fast_node = list;
-	listint_t *slow_node = list;
+	listint_t *fast_node = list, *slow_node = list;
 
-	while (fast_node != NULL && slow_node != NULL)
+	while (fast_node != NULL)
 	{
 		fast_node = fast_node->next->next;
 		slow_node = slow_node->next;
