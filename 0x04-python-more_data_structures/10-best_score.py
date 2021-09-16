@@ -4,7 +4,7 @@ def best_score(a_dictionary):
         return None
     name = "hi"
     high = 0
-    for index in a_dictionary:
+    for index in a_dictionary.keys():
         if a_dictionary[index] > high:
             high = a_dictionary[index]
             name = index
