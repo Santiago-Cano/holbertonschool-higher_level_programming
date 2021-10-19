@@ -100,7 +100,7 @@ class Base:
                     list.append(cls.create(**dict))
         except:
             pass
-        return []
+        return list
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
