@@ -78,28 +78,40 @@ class Base:
         file = cls.__name__ + ".csv"
         list = []
 
-        with open(file, mode="r") as f:
-            readfile = csv.reader(fcsv)
-            for i in readfile:
-                if cls.__name__ is "Rectangle":
-                    dict = {
-                        "id": int(args[0]),
-                        "width": int(args[1]),
-                        "height": int(args[2]),
-                        "x": int(args[3]),
-                        "y": int(args[4])
-                        }
-                    if cls.__name__ is "Square":
+        try:
+            with open(file, mode="r") as f:
+                readfile = csv.reader(f)
+                for i in readfile:
+                    if cls.__name__ == "Rectangle":
                         dict = {
-                            "id": int(args[0]),
-                            "size": int(args[1]),
-                            "x": int(args[2]),
-                            "y": int(args[3])
-                            }
-                    list.append(cls.create(dict))
-        return list
+                            "id": int(i[0]),
+                            "width": int(i[1]),
+                            "height": int(i[2]),
+                            "x": int(i[3]),
+                            "y": int(i[4])
+                        }
+                    if cls.__name__ == "Square":
+                        dict = {
+                            "id": int(i[0]),
+                            "size": int(i[1]),
+                            "x": int(i[2]),
+                            "y": int(i[3])
+                        }
+                    list.append(cls.create(**dict))
+        except:
+            pass
+        return []
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """ Serializes a CSV file"""
-        pass
+        file = cls.__name__ + ".csv"
+
+        with open(file, mode='w') as f:
+            writefile = csv.writer(f)
+            if cls.__name__ == "Rectangle":
+                for i in list_objs:
+                    writefile.writerow([i.id, i.width, i.height, i.x, i.y])
+            if cls.__name__ == "Square":
+                for i in list_objs:
+                    writefile.writerow([i.id, i.size, i.x, i.y])
