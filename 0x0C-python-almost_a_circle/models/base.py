@@ -2,6 +2,7 @@
 """Contains Base class, which will function as the base of all other classes"""
 
 import json
+import csv
 
 
 class Base:
@@ -70,3 +71,35 @@ class Base:
         except:
             pass
         return []
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserializes a CSV file"""
+        file = cls.__name__ + ".csv"
+        list = []
+
+        with open(file, mode="r") as f:
+            readfile = csv.reader(fcsv)
+            for i in readfile:
+                if cls.__name__ is "Rectangle":
+                    dict = {
+                        "id": int(args[0]),
+                        "width": int(args[1]),
+                        "height": int(args[2]),
+                        "x": int(args[3]),
+                        "y": int(args[4])
+                        }
+                    if cls.__name__ is "Square":
+                        dict = {
+                            "id": int(args[0]),
+                            "size": int(args[1]),
+                            "x": int(args[2]),
+                            "y": int(args[3])
+                            }
+                    list.append(cls.create(dict))
+        return list
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ Serializes a CSV file"""
+        pass
