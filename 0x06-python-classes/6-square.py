@@ -79,4 +79,4 @@ class Square:
                 print("{}{}".format(" " * self.__position[0],
                                     "#" * self.__size))
             else:
-                print("")
+                print()
